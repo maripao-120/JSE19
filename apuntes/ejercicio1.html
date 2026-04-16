@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card{
+           border-radius: 20px;
+           background-color: black;
+              color: white;
+              padding: 20px;
+              margin: 10px;
+        }
+        .card-image{
+            width: 300px;
+            height: 300px;
+            border:5px solid black;
+            border-radius: 70px;
+            display: flex;
+            flex-direction: row;
+
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:green">Hola Mundo</h1>
+    <!-- <h2>Encabezado</h2> -->
+     <p>yo soy un párrafo</p>
+     <p>yo soy un párrafo</p>
+     <p>yo soy un párrafo</p>
+     <p>yo soy un párrafo</p>
+     <p>yo soy un párrafo</p>
+     <img class="mortygroup" src="https://rickandmortyapi.com/api/character/avatar/18.jpeg" alt="">
+     <img class="mortygroup" src="https://rickandmortyapi.com/api/character/avatar/18.jpeg" alt="">
+     <img class="mortygroup" src="https://rickandmortyapi.com/api/character/avatar/18.jpeg" alt="">
+     <img class="mortygroup" src="https://rickandmortyapi.com/api/character/avatar/18.jpeg" alt="">
+     <img class="mortygroup" src="https://rickandmortyapi.com/api/character/avatar/18.jpeg" alt="">
+     <img class="mortygroup" src="https://rickandmortyapi.com/api/character/avatar/18.jpeg" alt="">
+     <img class="rickgroup" src="https://rickandmortyapi.com/api/character/avatar/361.jpeg" alt="">
+     <img class="rickgroup" src="https://rickandmortyapi.com/api/character/avatar/361.jpeg" alt="">
+    <button onclick="cambiarForma()">cambiar la forma</button>
+
+    
+    <script type="module">
+        import { search } from "../components/search.js";
+        import { card } from "../components/card.js";
+        console.log(search());
+        let input = search();
+        document.body.appendChild(input);
+        for (let i = 0; i < 10; i++) {
+            let tarjeta = card('Rick and morty','descripción de la tarjeta','https://rickandmortyapi.com/api/character/avatar/404.jpeg');
+            document.body.appendChild(tarjeta);
+        }
+        
+
+        let cambiarForma = () => {    
+            console.log("cambiando forma");    
+            let div = document.createElement('div');
+            div.style.border = "2px solid black";
+            div.style.display = "flex";
+            div.style.flexDirection = "column";
+            div.style.alignItems = "center";
+            div.style.gap = "30px";
+            div.style.width = "600px";
+            div.style.margin = "0 auto";
+            div.style.padding = "50px";
+            div.style.backgroundColor = "black";
+            // getElementsByClassName devuelve un HTMLCollection, es decir, una colección de elementos HTML que tienen la clase especificada. Es similar a un array, pero no es exactamente un array. Puedes acceder a los elementos de la colección utilizando índices, como imgs[0], imgs[1], etc., pero no puedes usar métodos de array como forEach directamente en la colección. Sin embargo, puedes convertir la colección en un array utilizando Array.from() o el operador de propagación (...) para poder usar métodos de array.
+            let imgs = document.querySelectorAll(".mortygroup");
+            console.log(imgs);
+            
+            for (let i = 0; i < imgs.length; i++) {
+                console.log(div);  
+                const img = imgs[i]; 
+                if(i % 2 == 0){
+                    img.style.borderRadius = "50%";
+                } else {
+                    img.style.borderRadius = "0%";
+                }
+                div.appendChild(img);
+             }
+             document.body.appendChild(div);
+        }
+         let h2 = document.createElement("h2");
+         h2.textContent = "Encabezado";
+         h2.style.color = "red";
+         h2.style.fontSize = "24px";
+         document.body.appendChild(h2);
+         console.log(h2);
+
+         let p = document.getElementsByTagName("p");
+         console.log(p);
+        console.log(p.length);
+        for(let i = 0; i < p.length; i++){
+            console.log('parrafo ',p[i]);
+            if(i % 2 == 0){
+                p[i].style.color = "blue";
+        }
+        
+    }
+
+
+    </script>
+</body>
+</html>
