@@ -1,17 +1,15 @@
-export let card = (title, description, imageUrl) => {
-    console.log("Creando tarjeta con título:", title,description,imageUrl);
-    let card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `<h1 style="color: green;">${title}</h1><h2 style="color: white;">${description}</h2>`;
-    // let h1 = document.createElement("h1");
-    // h1.style.color = "green";
-    // h1.textContent = title;
-    let img = document.createElement("img");
-    img.src = imageUrl;
-    img.alt = title; 
-    img.classList.add("card-image");
-    card.appendChild(img);  
-    return card; 
-    {LISTO} 
-
+export const renderCards = (container, item) => {
+    container.innerHTML = '';
+    item.forEach(character => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <img src="${character.image}" alt="${character.name}" class="card-image w-full h-auto">
+            <div class="card-content p-4">
+                <h2 class="card-title text-xl font-bold mb-2">${character.name}</h2>        
+                <p class="card-description text-gray-300 font-mono">${character.species} - ${character.status}</p>                
+        
+        `;
+        container.appendChild(card);
+    });
 }
